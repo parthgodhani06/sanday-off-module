@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Brinkmarkt_Popup::css/style.css"/>
+        <css src="Brinkmarkt_Popup::css/bootstrap.css"/>
+        <css src="Brinkmarkt_Popup::css/font-awesome.min.css"/>
+        <css src="Brinkmarkt_Popup::css/extralayers.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\FormKey" name="formkey"/>
+            <referenceContainer name="main.content" remove="true"/>
+            <referenceContainer name="copyright" remove="true"/>
+            <referenceContainer name="content" remove="true"/>
+            <referenceBlock name="frontend-storage-manager" remove="true"/>
+            <referenceBlock name="ajax_cart_sidebar" remove="true"/>        
+            <block class="Brinkmarkt\Popup\Block\Display" name="popup_index_display_redirect" template="Brinkmarkt_Popup::maintenance.phtml" />
+            <block class="Brinkmarkt\Popup\Block\Subscribe" name="form.subscribe.display" as="footer.newsletter.display" template="Brinkmarkt_Popup::subscribe.phtml"/>
+
+
+        </referenceContainer>
+
+
+    </body>
+</page>
+

@@ -1,0 +1,105 @@
+<?php
+
+$subscribeLabel      = $block->getSubscribeSetting('subscribe_label');
+$subscribeLabelColor = $block->getSubscribeSetting('subscribe_label_color');
+?>
+<style type="text/css">
+    .clock {color: #fff; font-size: 60px; font-family: Orbitron; letter-spacing: 7px; }
+    .block.newsletter{max-width: 100%; } 
+    .form.subscribe .control label {width : 100%; }
+    .block.newsletter .field .control:before {display: none; }
+    .form.subscribe .control input#newsletter {height: 40px; width: 95%; }
+    .cover-background .slider-text-top.slider-text-middle2 {padding: 80px 15px;} 
+    @media (max-width: 767px){
+        .notify-me-main{height: 40vh !important; }
+        .the-24h-countdown{width : 85% !important; margin-top: 35px !important; }
+        .the-24h-countdown h2.title-big-2{font-size: 23px; }
+        div.clock{font-size: 45px; text-align: center;}
+        div#MyClockDisplay{font-size: 35px; margin-top: 45px !important; }
+        section.page-main-sec .coming-soon-logo{ margin-top: 10px !important; }
+        section.page-main-sec { padding-bottom: 0px !important; }
+    }
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        .the-24h-countdown{margin-top: 25px !important; width: 60% !important; } 
+        div#MyClockDisplay{font-size: 40px; margin-top: 50px !important; }
+        section.page-main-sec .block.newsletter {width : 55% !important;}
+    }
+
+    @media (min-width: 320px) and (max-width: 768px){
+        section.page-main-sec .title-big-2 { line-height: 30px !important; }
+        .block.newsletter{ margin-top: 30px !important;}
+        .form.subscribe .control input#newsletter { width: 80% !important; margin: 0px 10px !important; }
+        .block.newsletter .actions { right: 10px !important; }
+        .block.newsletter button.action.subscribe.primary { height: 40px !important; color: beige; }
+    }
+    
+    body {overflow-y:hidden;}
+    section.page-main-sec {padding: 0 0 60px 0;}
+    section.page-main-sec .slider-text-middle-main {padding: 30px 0;}
+    .block.newsletter{margin: auto;}
+    section.page-main-sec .coming-soon-logo{ text-align: center; }
+    section.page-main-sec div.clock{font-size: 45px; text-align: center;}
+    section.page-main-sec .title-big-2 { text-align: center; line-height: 45px; }
+    section.page-main-sec span#hrs, section.page-main-sec span#mins, section.page-main-sec span#secs { 
+        color: black;
+        background-color: white;
+        padding: 5px 8px;
+        letter-spacing: 2px;
+        border-radius: 5px;
+    }
+
+    .block.newsletter input#newsletter:focus {
+        border-color: #295ca8ab !important;
+    }
+
+    .block.newsletter button.action.subscribe.primary {
+        background: #295ca8 !important;
+        border: none !important;
+    }
+</style>
+ <!-- <body class="overflow-hidden xs-overflow-auto bg-black"> -->
+    <section class="page-main-sec">
+        <div class="slider-text-middle-main" style="background-image:url('<?php echo $this->getViewFileUrl('Brinkmarkt_Popup/images/bg.jpg'); ?>');">
+            <div class="slider-text-top slider-text-middle2">
+                <div class="coming-soon-logo" style="margin: 60px 26px 30px 26px;">
+                    <img class="logo-style-2" src="<?php echo $this->getViewFileUrl('Brinkmarkt_Popup/images/logo-light-big.png'); ?>" alt=""/>
+                </div>
+                <div class="the-24h-countdown" style="width: 60%; margin: auto; background:#295da8; margin-top: 100px;">
+                    <h2 class="title-big-2" style="color: #000;border-radius:5px;color:#fff;margin-bottom:10px; text-transform: none; padding-bottom: 5px;">Vanwege geloofsovertuiging zijn wij zondags gesloten.<br>Vanaf maandag kunt u weer bij ons bestellen.<br>Wij zien u morgen graag weer terug.
+                    </h2>
+                </div>
+                <div id="MyClockDisplay" class="clock" style="margin: 85px 26px 30px 26px;">
+                    <span id="MyTimer" onload="showTime()">
+                        <span id="hrs"></span>
+                        <span id="mins"></span>
+                        <span id="secs"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        function showTime(){
+            var date = new Date();
+            var h = 23 - date.getHours(); // 0 - 23
+            var m = 60 - date.getMinutes(); // 0 - 59
+            var s = 60 - date.getSeconds(); // 0 - 59
+            var session = "AM";
+            
+            if(h == 0){
+                h = 12;
+            }
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            // var time = h + ":" + m + ":" + s + " ";
+            // document.getElementById("MyTimer").innerText = time;
+            document.getElementById("hrs").innerText = h;
+            document.getElementById("mins").innerText = m;
+            document.getElementById("secs").textContent = s;   
+            setTimeout(showTime, 1000);
+        }
+        showTime();
+    </script>
